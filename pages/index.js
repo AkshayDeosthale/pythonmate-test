@@ -26,20 +26,7 @@ export default function Home() {
         password: pass,
       })
     );
-    const user = {
-      first_name: firstName,
 
-      last_name: lastName,
-
-      email: email,
-
-      password: pass,
-    };
-
-    axios.post(`http://3.140.210.76:8000/api/user/`, { user }).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
     router.push("/Login");
   };
 
@@ -56,9 +43,8 @@ export default function Home() {
       password: pass,
     };
 
-    axios.post(`http://3.140.210.76:8000/api/user/`, { user }).then((res) => {
-      console.log(res);
-      console.log(res.data);
+    axios.post(`http://13.127.127.40/api/user/`, { user }).then((res) => {
+      console.log("this is response", res.data);
     });
   };
 
@@ -71,9 +57,9 @@ export default function Home() {
       </Head>
       <form
         className={styles.container}
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
+        // onSubmit={(e) => {
+        //   handleSubmit(e);
+        // }}
       >
         <label htmlFor="firstName">First Name</label>
         <input
@@ -113,6 +99,7 @@ export default function Home() {
         <button
           type="submit"
           onClick={(e) => {
+            handleSubmit(e);
             dispatch(
               login({
                 firstName,
